@@ -16,11 +16,13 @@ const router = createRouter({
     routes: [
         { path: '/', name: 'Home', component: Home },
         { path: '/about', name: 'About', component: About },
-        { path: '/brazil', name: 'Brazil', component: Brazil },
-        { path: '/jamaica', name: 'Jamaica', component: Jamaica },
-        { path: '/panama', name: 'Panama', component: Panama },
-        { path: '/hawaii', name: 'Hawaii', component: Hawaii },
-    ]
+        { path: '/brazil', name: 'Brazil', component: () => import('./views/Brazil.vue') },
+        { path: '/jamaica', name: 'Jamaica', component: () => import('./views/Jamaica.vue') },
+        { path: '/panama', name: 'Panama', component: () => import('./views/Panama.vue') },
+        { path: '/hawaii', name: 'Hawaii', component: () => import('./views/Hawaii.vue') },
+        {path: '/destination/:id', component: () =>import('./views/DestinationShow.vue')}
+    ],
+    linkActiveClass: 'active'
 })
 
 createApp(App).use(router).mount('#app')
