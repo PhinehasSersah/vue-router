@@ -1,8 +1,9 @@
 <template>
   <div class="home">
     <h1>All Destinations</h1>
+
     <div class="destinations">
-      <router-link v-for="item in destinations" :key="item.id" :to="item.slug">
+      <router-link v-for="item in destinations" :key="item.id" :to="{name: 'destination.show', params: {id: item.id}}">
         <h2>
           {{ item.name }}
         </h2>

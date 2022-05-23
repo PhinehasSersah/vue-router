@@ -1,20 +1,31 @@
 <template>
-    <div id="nav">
+  <div id="nav">
       <router-link to="/">Home</router-link>
-      <router-link to="/brazil">Brazil</router-link>
-      <router-link to="/jamaica">Jamaica</router-link>
-      <router-link to="/hawaii">Hawaii</router-link>
-      <router-link to="/panama">Panama</router-link>
-    </div>
-
+    <router-link
+      v-for="item in destinations"
+      :key="item.id"
+      :to="{ name: 'destination.show', params: { id: item.id } }"
+    >
+      {{ item.name }}
+    </router-link>
+  </div>
 </template>
 
 <script>
+import sourceData from "../data.json";
+
+export default {
+  data() {
+    return {
+      destinations: sourceData.destinations,
+    };
+  },
+};
 </script>
 
 <style lang="css">
-    #nav .active {
-        color: red;
-        border-bottom: 2px solid red
-    }
+#nav .active {
+  color: red;
+  border-bottom: 2px solid red;
+}
 </style>
